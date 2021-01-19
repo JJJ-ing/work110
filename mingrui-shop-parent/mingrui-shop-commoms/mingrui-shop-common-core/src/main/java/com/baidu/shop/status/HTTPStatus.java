@@ -1,10 +1,10 @@
 package com.baidu.shop.status;
 
 /**
- * @ClassName HTTPStatus
+ * @ClassName BaseApiService
  * @Description: TODO
  * @Author wangjing
- * @Date 2020/12/23
+ * @Date 2021/1/19
  * @Version V1.0
  **/
 
