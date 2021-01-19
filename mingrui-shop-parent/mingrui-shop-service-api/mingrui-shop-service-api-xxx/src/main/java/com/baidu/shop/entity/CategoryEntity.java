@@ -42,4 +42,5 @@ public class CategoryEntity {
     @ApiModelProperty(value = "排序",example = "1")
     @NotNull(message = "排序字段不能为null",groups = {MingruiOperation.Add.class})
     private Integer sort;
+    //ces
 }
