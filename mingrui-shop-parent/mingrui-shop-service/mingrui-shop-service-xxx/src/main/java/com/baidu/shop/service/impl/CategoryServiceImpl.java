@@ -50,6 +50,7 @@ public class CategoryServiceImpl extends BaseApiService implements CategoryServi
         return this.setResultSuccess(list);
     }
 
+    //删除
     @Transactional
     @Override
     public Result<JsonObject> deleteCategoryById(Integer id) {
