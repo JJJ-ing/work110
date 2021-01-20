@@ -43,6 +43,7 @@ public class CategoryServiceImpl extends BaseApiService implements CategoryServi
         return this.setResultSuccess(list);
     }
 
+    //通过brandId查询品牌
     @Override
     public Result<List<CategoryEntity>> getCategoryByBrandId(Integer brandId) {
         List<CategoryEntity> list = categoryMapper.getCategoryByBrandId(brandId);
