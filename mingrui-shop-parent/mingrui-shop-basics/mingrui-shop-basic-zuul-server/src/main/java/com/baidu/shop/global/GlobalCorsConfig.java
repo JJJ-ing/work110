@@ -6,11 +6,12 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
+
 /**
  * @ClassName GlobalCorsConfig
  * @Description: TODO
- * @Author wangjing
- * @Date 2021/1/19
+ * @Author shenyaqi
+ * @Date 2020/12/23
  * @Version V1.0
  **/
 
@@ -36,4 +37,5 @@ public class GlobalCorsConfig {
 //3.返回新的CorsFilter.
         return new CorsFilter(source);
     }
+
 }

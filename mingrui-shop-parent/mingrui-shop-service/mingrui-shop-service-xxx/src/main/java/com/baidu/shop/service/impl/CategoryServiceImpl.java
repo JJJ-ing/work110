@@ -15,6 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RestController;
 import tk.mybatis.mapper.entity.Example;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -26,10 +27,10 @@ import java.util.List;
  **/
 @RestController
 public class CategoryServiceImpl extends BaseApiService implements CategoryService {
-    @Autowired
+    @Resource
     private CategoryMapper categoryMapper;
 
-    @Autowired
+    @Resource
     private CategoryBrandMapper categoryBrandMapper;
 
     @Override
@@ -80,6 +81,29 @@ public class CategoryServiceImpl extends BaseApiService implements CategoryServi
         }
 
         categoryMapper.deleteByPrimaryKey(id);
+        return this.setResultSuccess();
+    }
+
+    @Transactional
+    @Override
+    public Result<JsonObject> editCategoryById(CategoryEntity categoryEntity) {
+        try {
+            categoryMapper.updateByPrimaryKeySelective(categoryEntity);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return this.setResultSuccess();
+    }
+
+    @Transactional
+    @Override
+    public Result<JsonObject> addCategoryById(CategoryEntity categoryEntity) {
+        CategoryEntity parentCategoryEntity = new CategoryEntity();
+        parentCategoryEntity.setId(categoryEntity.getParentId());
+        parentCategoryEntity.setIsParent(1);
+        categoryMapper.updateByPrimaryKeySelective(parentCategoryEntity);
+
+        categoryMapper.insertSelective(categoryEntity);
         return this.setResultSuccess();
     }
 }

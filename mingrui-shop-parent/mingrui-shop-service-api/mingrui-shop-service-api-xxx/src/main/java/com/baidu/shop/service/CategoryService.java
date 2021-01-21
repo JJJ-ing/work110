@@ -24,11 +24,15 @@ public interface CategoryService {
     @GetMapping(value = "category/list")
     Result<List<CategoryEntity>> getCategoryByPid(Integer pid);
 
-    @ApiOperation(value = "通过品牌id查询分类信息")
-    @GetMapping(value = "category/brand")
-    Result<List<CategoryEntity>> getCategoryByBrandId(Integer brandId);
-
     @ApiOperation(value = "通过id删除分类")
-    @DeleteMapping(value = "/category/delete")
+    @DeleteMapping(value = "category/delete")
     Result<JsonObject> deleteCategoryById(Integer id);
+
+    @ApiOperation(value = "修改分类")
+    @PutMapping(value = "category/edit")
+    Result<JsonObject> editCategoryById(@RequestBody CategoryEntity categoryEntity);
+
+    @ApiOperation(value = "新增分类")
+    @PostMapping(value = "category/add")
+    Result<JsonObject> addCategoryById(@RequestBody CategoryEntity categoryEntity);
 }
