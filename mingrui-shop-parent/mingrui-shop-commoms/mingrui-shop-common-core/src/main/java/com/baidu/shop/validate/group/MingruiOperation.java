@@ -1,4 +1,4 @@
-package com.baidu.shop.validate.grop;
+package com.baidu.shop.validate.group;
 
 /**
  * @ClassName CategoryEntity
