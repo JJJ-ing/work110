@@ -20,6 +20,7 @@ zuul:
   # 忽略上传服务
   ignored-services:
     -upload-server
+
 #配置负载
 ribbon:
   ConnectTimeout: 250 # 连接超时时间(ms)
