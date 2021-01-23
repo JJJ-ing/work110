@@ -58,6 +58,6 @@ public class UploadController extends BaseApiService {
             e.printStackTrace();
         }
 
-        return this.setResult(HTTPStatus.OK,"upload success!!!",imageHost + "/" + filename);//将文件名返回页面用于页面回显
+        return this.setResult(HTTPStatus.OK,"upload success!!!",imageHost + "/" + filename);
     }
 }
