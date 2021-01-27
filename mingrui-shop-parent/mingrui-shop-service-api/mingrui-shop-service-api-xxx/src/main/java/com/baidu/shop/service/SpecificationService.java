@@ -26,4 +26,15 @@ public interface SpecificationService {
     @GetMapping(value = "specgroup/getSpecGroupInfo")
     Result<List<SpecGroupEntity>> getSepcGroupInfo(SpecGroupDTO specGroupDTO);
 
+    @ApiOperation(value = "新增规格组")
+    @PostMapping(value = "specgroup/save")
+    Result<JSONObject> saveSpecGroup(@Validated({MingruiOperation.Add.class}) @RequestBody SpecGroupDTO specGroupDTO);
+
+    @ApiOperation(value = "修改规格组")
+    @PutMapping(value = "specgroup/save")
+    Result<JSONObject> editSpecGroup(@Validated({MingruiOperation.Update.class}) @RequestBody SpecGroupDTO specGroupDTO);
+
+    @ApiOperation(value = "删除规格组")
+    @DeleteMapping(value = "specgroup/delete/{id}")
+    Result<JSONObject> deleteSpecGroupById(@PathVariable Integer id);
 }
