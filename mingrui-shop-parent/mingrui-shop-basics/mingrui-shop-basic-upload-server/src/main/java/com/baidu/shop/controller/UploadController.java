@@ -14,21 +14,21 @@ import java.io.File;
 import java.io.IOException;
 import java.util.UUID;
 
-@RestController
-@RequestMapping(value = "upload")
+//@RestController
+//@RequestMapping(value = "upload")
 public class UploadController extends BaseApiService {
     //linux系统的上传目录
-    @Value(value = "${mingrui.upload.path.windows}")
+    //@Value(value = "${mingrui.upload.path.windows}")
     private String windowsPath;
 
     //window系统的上传目录
-    @Value(value = "${mingrui.upload.path.linux}")
+    //@Value(value = "${mingrui.upload.path.linux}")
     private String linuxPath;
 
-    @Value(value = "${mingrui.upload.img.host}")
+    //@Value(value = "${mingrui.upload.img.host}")
     private String imageHost;
 
-    @PostMapping
+    //@PostMapping
     public Result<String> uploadImg(@RequestParam MultipartFile file) {
         if (file.isEmpty()) return this.setResultError("上传的文件为空");
         String filename = file.getOriginalFilename();
