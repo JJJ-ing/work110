@@ -16,4 +16,9 @@ public interface GoodsService {
     @ApiOperation(value = "查询spu信息")
     @GetMapping(value = "/goods/getSpuInfo")
     Result<List<SpuDTO>> getSpuInfo(SpuDTO spuDTO);
+
+    @ApiOperation(value = "新增商品")
+    @PostMapping(value = "/goods/save")
+    Result<JSONObject> saveGoods(@Validated({MingruiOperation.Add.class}) @RequestBody SpuDTO spuDTO);
+
 }

@@ -64,4 +64,10 @@ public class SpuDTO extends BaseDTO {
     private String categoryName;
 
     private String brandName;
+
+    @ApiModelProperty(value = "大字段数据")
+    private SpuDetailDTO spuDetail;
+
+    @ApiModelProperty(value = "sku属性数据集合")
+    private List<SkuDTO> skus;
 }

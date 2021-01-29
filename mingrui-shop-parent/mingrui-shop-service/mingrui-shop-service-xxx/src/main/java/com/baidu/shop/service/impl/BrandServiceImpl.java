@@ -34,11 +34,15 @@ import java.util.stream.Collectors;
 @RestController
 public class BrandServiceImpl extends BaseApiService implements BrandService {
 
-    @Autowired
     private BrandMapper brandMapper;
 
     @Autowired
     private CategoryBrandMapper categoryBrandMapper;
+
+    @Autowired
+    public void setBrandMapper(BrandMapper brandMapper){
+        this.brandMapper = brandMapper;
+    }
 
     @Override
     public Result<PageInfo<BrandEntity>> getBrandInfo(BrandDTO brandDTO) {
@@ -46,10 +50,11 @@ public class BrandServiceImpl extends BaseApiService implements BrandService {
 
         if (!StringUtils.isEmpty(brandDTO.getSort())) PageHelper.orderBy(brandDTO.getOrderBy());
 
-        Example example = new Example(BrandEntity.class);
+        BrandEntity brandEntity = BaiduBeanUtil.copyProperties(brandDTO,BrandEntity.class);
 
-        if (!StringUtils.isEmpty(brandDTO.getName()))
-            example.createCriteria().andLike("name","%" + brandDTO.getName() + "%");
+        Example example = new Example(BrandEntity.class);
+        if (!StringUtils.isEmpty(brandEntity.getName()))
+            example.createCriteria().andLike("name","%" + brandEntity.getName() + "%");
 
         List<BrandEntity> brandEntities = brandMapper.selectByExample(example);
         PageInfo<BrandEntity> pageInfo = new PageInfo<>(brandEntities);
@@ -88,6 +93,12 @@ public class BrandServiceImpl extends BaseApiService implements BrandService {
 
         this.deleteCategoryBrandByBrandId(id);
         return this.setResultSuccess();
+    }
+
+    @Override
+    public Result<List<BrandEntity>> getBrandInfoByCategoryId(Integer cid) {
+        List<BrandEntity> list = brandMapper.getBrandInfoByCategoryId(cid);
+        return this.setResultSuccess(list);
     }
 
     private void deleteCategoryBrandByBrandId(Integer brandId) {
